@@ -1,0 +1,23 @@
+{
+  "name": "jsEditor",
+  "version": "0.0.1",
+  "type": "flogo:activity",
+  "description": "activity description",
+  "author": "Pranav Shah <shahpranaf@gmail.com>",
+  "inputs":[
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "salutation",
+      "type": "string"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "string"
+    }
+  ]
+}
