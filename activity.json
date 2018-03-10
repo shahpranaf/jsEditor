@@ -4,6 +4,7 @@
   "type": "flogo:activity",
   "description": "activity description",
   "author": "Pranav Shah <shahpranaf@gmail.com>",
+  "ref": "github.com/shahpranaf/jsEditor",
   "inputs":[
     {
       "name": "name",
