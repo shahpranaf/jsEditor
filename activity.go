@@ -4,6 +4,7 @@ import (
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
+import "github.com/robertkrimen/otto"
 
 // THIS IS ADDED
 // log is the default package logger which we'll use to log
@@ -27,6 +28,11 @@ func (a *MyActivity) Metadata() *activity.Metadata {
 // THIS HAS CHANGED
 // Eval implements activity.Activity.Eval
 func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
+	vm := otto.New()
+	vm.Run(`
+		abc = 2 + 2;
+		console.log("The value of abc is " + abc); // 4
+	`)
 	// Get the activity data from the context
 	name := context.GetInput("name").(string)
 	salutation := context.GetInput("salutation").(string)
