@@ -21,6 +21,11 @@
     {
       "name": "arg3",
       "type": "any"
+    },
+    {
+      "name": "return",
+      "type": "boolean",
+      "value": true
     }
   ],
   "outputs": [

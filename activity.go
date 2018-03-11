@@ -29,10 +29,8 @@ func (a *MyActivity) Metadata() *activity.Metadata {
 // Eval implements activity.Activity.Eval
 func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	vm := otto.New()
-	// vm.Run(`
-	// 	abc = 2 + 2;
-	// 	console.log("The value of abc is " + abc); // 4
-	// `)
+
+	returnVar := true
 
 	arg1 := context.GetInput("arg1")
 	arg2 := context.GetInput("arg2")
@@ -47,24 +45,25 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	if _, err := vm.Run(context.GetInput("jscode")); err == nil {
 		if value1, err := vm.Get("arg1"); err == nil {
 			if argsOut1, err := value1.Export(); err == nil {
-				log.Debugf("The value of i is %s", argsOut1) // 4
 				context.SetOutput("arg1_out", argsOut1)
 				log.Debugf("The value of j is %s", argsOut1) // 4
 			}
 		}
 		if value2, err := vm.Get("arg2"); err == nil {
 			if argsOut2, err := value2.Export(); err == nil {
-				log.Debugf("The value of i is %s", argsOut2) // 4
 				context.SetOutput("arg2_out", argsOut2)
 				log.Debugf("The value of j is %s", argsOut2) // 4
 			}
 		}
 		if value3, err := vm.Get("arg3"); err == nil {
 			if argsOut3, err := value3.Export(); err == nil {
-				log.Debugf("The value of i is %s", argsOut3) // 4
 				context.SetOutput("arg3_out", argsOut3)
 				log.Debugf("The value of j is %s", argsOut3) // 4
 			}
+		}
+
+		if returnVar1, err := vm.Get("returnVar"); err == nil {
+			returnVar, _ = returnVar1.ToBoolean()
 		}
 	} else {
 		context.SetOutput("arg1_out", arg1)
@@ -94,5 +93,5 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	// }
 
 	// Signal to the Flogo engine that the activity is completed
-	return true, nil
+	return returnVar, nil
 }
