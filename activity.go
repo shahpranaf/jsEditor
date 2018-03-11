@@ -38,7 +38,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 	vm.Set("args", args)
 
-	//code, _ := vm.Run(context.GetInput("code").(string))
+	vm.Run(context.GetInput("code"))
 	// Get the activity data from the context
 	// name := context.GetInput("name").(string)
 	// salutation := context.GetInput("salutation").(string)
