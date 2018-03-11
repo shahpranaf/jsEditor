@@ -18,7 +18,7 @@
   "outputs": [
     {
       "name": "args_out",
-      "type": "string"
+      "type": "array"
     }
   ]
 }
