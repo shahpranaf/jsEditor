@@ -29,10 +29,12 @@ func (a *MyActivity) Metadata() *activity.Metadata {
 // Eval implements activity.Activity.Eval
 func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	vm := otto.New()
-	vm.Run(`
-		abc = 2 + 2;
-		console.log("The value of abc is " + abc); // 4
-	`)
+	// vm.Run(`
+	// 	abc = 2 + 2;
+	// 	console.log("The value of abc is " + abc); // 4
+	// `)
+
+	name, _ := vm.Run(context.GetInput("name").(string))
 	// Get the activity data from the context
 	// name := context.GetInput("name").(string)
 	// salutation := context.GetInput("salutation").(string)
@@ -41,13 +43,13 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	//log.Debugf("The Flogo engine says [%s] to [%s]", salutation, name)
 
 	// Set the result as part of the context
-	if value, err := vm.Get("abc"); err == nil {
-		if valueInt, err := value.ToInteger(); err == nil {
-			log.Debugf("The value of i is [%d]", valueInt) // 4
-			context.SetOutput("result", valueInt)
-		}
+	// if value, err := vm.Get("abc"); err == nil {
+	// 	if valueInt, err := value.ToInteger(); err == nil {
+	log.Debugf("The value of i is [%s]", name) // 4
+	context.SetOutput("result", name)
+	// }
 
-	}
+	// }
 
 	// Signal to the Flogo engine that the activity is completed
 	return true, nil
