@@ -39,6 +39,8 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	vm.Set("args", args)
 	vm.Set("context", context)
 
+	log.Debugf("The value of k is %s", context.ActivityHost().Name()) // 4
+
 	if _, err := vm.Run(context.GetInput("jscode")); err == nil {
 		if value, err := vm.Get("args"); err == nil {
 			if argsOut1, err := value.ToString(); err == nil {
