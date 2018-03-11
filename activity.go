@@ -39,6 +39,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	vm.Set("arg1", arg1)
 	vm.Set("arg2", arg2)
 	vm.Set("arg3", arg3)
+	vm.Set("returnVar", true)
 
 	// log.Debugf("The value of k is %s", context.ActivityHost().Name()) // 4
 
