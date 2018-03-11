@@ -39,13 +39,14 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	vm.Set("args", args)
 
 	if _, err := vm.Run(context.GetInput("jscode")); err == nil {
-		if argsOut1, err := vm.Get("args"); err == nil {
-			log.Debugf("The value of i is %s", argsOut1) // 4
-			// context.SetOutput("args_out", argsOut)
-			context.SetOutput("args_out", argsOut1)
+		if value, err := vm.Get("args"); err == nil {
+			if argsOut1, err := value.ToString(); err == nil {
+				log.Debugf("The value of i is %s", argsOut1) // 4
+				// context.SetOutput("args_out", argsOut)
+				context.SetOutput("args_out", argsOut1)
 
-			log.Debugf("The value of j is %s", argsOut1) // 4
-
+				log.Debugf("The value of j is %s", argsOut1) // 4
+			}
 		}
 	} else {
 		context.SetOutput("args_out", args)
