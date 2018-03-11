@@ -64,6 +64,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 		if returnVar1, err := vm.Get("returnVar"); err == nil {
 			returnVar, _ = returnVar1.ToBoolean()
+			log.Debugf("The value of reutrn is %s", returnVar) // 4
 		}
 	} else {
 		context.SetOutput("arg1_out", arg1)
