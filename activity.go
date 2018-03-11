@@ -37,6 +37,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	args := context.GetInput("args")
 
 	vm.Set("args", args)
+	vm.Set("context", context)
 
 	if _, err := vm.Run(context.GetInput("jscode")); err == nil {
 		if value, err := vm.Get("args"); err == nil {
