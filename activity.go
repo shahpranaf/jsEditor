@@ -34,7 +34,11 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	// 	console.log("The value of abc is " + abc); // 4
 	// `)
 
-	name, _ := vm.Run(context.GetInput("name").(string))
+	args := context.GetInput("args").(string)
+
+	vm.Set("args", args)
+
+	code, _ := vm.Run(context.GetInput("code").(string))
 	// Get the activity data from the context
 	// name := context.GetInput("name").(string)
 	// salutation := context.GetInput("salutation").(string)
@@ -44,9 +48,9 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 	// Set the result as part of the context
 	// if value, err := vm.Get("abc"); err == nil {
-	if name, err := name.ToString(); err == nil {
-		log.Debugf("The value of i is [%s]", name) // 4
-		context.SetOutput("result", name)
+	if code, err := code.ToString(); err == nil {
+		log.Debugf("The value of i is [%s]", code) // 4
+		context.SetOutput("result", code)
 	}
 
 	// }

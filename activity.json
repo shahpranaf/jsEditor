@@ -7,17 +7,17 @@
   "ref": "github.com/shahpranaf/jsEditor",
   "inputs":[
     {
-      "name": "name",
+      "name": "jscode",
       "type": "any"
     },
     {
-      "name": "salutation",
+      "name": "args",
       "type": "string"
     }
   ],
   "outputs": [
     {
-      "name": "result",
+      "name": "args_out",
       "type": "string"
     }
   ]
