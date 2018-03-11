@@ -34,25 +34,42 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	// 	console.log("The value of abc is " + abc); // 4
 	// `)
 
-	args := context.GetInput("args")
+	arg1 := context.GetInput("arg1")
+	arg2 := context.GetInput("arg2")
+	arg3 := context.GetInput("arg3")
 
-	vm.Set("args", args)
-	vm.Set("context", context)
+	vm.Set("arg1", arg1)
+	vm.Set("arg2", arg2)
+	vm.Set("arg3", arg3)
 
 	// log.Debugf("The value of k is %s", context.ActivityHost().Name()) // 4
 
 	if _, err := vm.Run(context.GetInput("jscode")); err == nil {
-		if value, err := vm.Get("args"); err == nil {
-			if argsOut1, err := value.ToString(); err == nil {
+		if value1, err := vm.Get("arg1"); err == nil {
+			if argsOut1, err := value1.Export(); err == nil {
 				log.Debugf("The value of i is %s", argsOut1) // 4
-				// context.SetOutput("args_out", argsOut)
-				context.SetOutput("args_out", argsOut1)
-
+				context.SetOutput("arg1_out", argsOut1)
 				log.Debugf("The value of j is %s", argsOut1) // 4
 			}
 		}
+		if value2, err := vm.Get("arg2"); err == nil {
+			if argsOut2, err := value2.Export(); err == nil {
+				log.Debugf("The value of i is %s", argsOut2) // 4
+				context.SetOutput("arg2_out", argsOut2)
+				log.Debugf("The value of j is %s", argsOut2) // 4
+			}
+		}
+		if value3, err := vm.Get("arg3"); err == nil {
+			if argsOut3, err := value3.Export(); err == nil {
+				log.Debugf("The value of i is %s", argsOut3) // 4
+				context.SetOutput("arg3_out", argsOut3)
+				log.Debugf("The value of j is %s", argsOut3) // 4
+			}
+		}
 	} else {
-		context.SetOutput("args_out", args)
+		context.SetOutput("arg1_out", arg1)
+		context.SetOutput("arg2_out", arg2)
+		context.SetOutput("arg3_out", arg3)
 	}
 
 	// 	if argsOut1, err := vm.Get("args"); err == nil {

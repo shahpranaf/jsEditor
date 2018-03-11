@@ -12,13 +12,29 @@
     },
     {
       "name": "arg1",
-      "type": "array"
+      "type": "any"
+    },
+    {
+      "name": "arg2",
+      "type": "any"
+    },
+    {
+      "name": "arg3",
+      "type": "any"
     }
   ],
   "outputs": [
     {
-      "name": "args_out",
-      "type": "array"
+      "name": "arg1_out",
+      "type": "any"
+    },
+    {
+      "name": "arg2_out",
+      "type": "any"
+    },
+    {
+      "name": "arg3_out",
+      "type": "any"
     }
   ]
 }
