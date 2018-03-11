@@ -48,9 +48,9 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 	// Set the result as part of the context
 	// if value, err := vm.Get("abc"); err == nil {
-	if code, err := code.ToString(); err == nil {
-		log.Debugf("The value of i is [%s]", code) // 4
-		context.SetOutput("result", code)
+	if argsOut, err := code.ToString(); err == nil {
+		log.Debugf("The value of i is [%s]", argsOut) // 4
+		context.SetOutput("args_out", argsOut)
 	}
 
 	// }
