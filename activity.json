@@ -12,7 +12,7 @@
     },
     {
       "name": "args",
-      "type": "any"
+      "type": "object"
     }
   ],
   "outputs": [
