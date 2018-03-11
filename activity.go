@@ -41,7 +41,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	log.Debugf("The Flogo engine says [%s] to [%s]", salutation, name)
 
 	// Set the result as part of the context
-	context.SetOutput("result", "The Flogo engine says "+salutation+" to "+name)
+	context.SetOutput("result", "The Flogo engine says "+salutation+" to "+vm.Get("abc"))
 
 	// Signal to the Flogo engine that the activity is completed
 	return true, nil
