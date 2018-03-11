@@ -34,14 +34,16 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 		console.log("The value of abc is " + abc); // 4
 	`)
 	// Get the activity data from the context
-	name := context.GetInput("name").(string)
-	salutation := context.GetInput("salutation").(string)
+	// name := context.GetInput("name").(string)
+	// salutation := context.GetInput("salutation").(string)
 
 	// Use the log object to log the greeting
-	log.Debugf("The Flogo engine says [%s] to [%s]", salutation, name)
+	//log.Debugf("The Flogo engine says [%s] to [%s]", salutation, name)
 
 	// Set the result as part of the context
 	if value, err := vm.Get("abc"); err == nil {
+		log.Debugf("The value i", value)
+
 		context.SetOutput("result", value)
 
 	}
