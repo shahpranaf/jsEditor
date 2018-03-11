@@ -38,9 +38,10 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 	vm.Set("args", args)
 
-	value, err := vm.Run(context.GetInput("jscode").(string))
+	value, err := vm.Run(context.GetInput("jscode"))
 
 	log.Debugf("The value of j is %s", value)
+	log.Debugf("The value of err is %s", err)
 
 	// if ( value := !"" ) {
 
