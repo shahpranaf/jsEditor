@@ -44,10 +44,10 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 	// Set the result as part of the context
 	// if value, err := vm.Get("abc"); err == nil {
-	// 	if valueInt, err := value.ToInteger(); err == nil {
-	log.Debugf("The value of i is [%s]", name) // 4
-	context.SetOutput("result", name)
-	// }
+	if name, err := name.ToString(); err == nil {
+		log.Debugf("The value of i is [%s]", name) // 4
+		context.SetOutput("result", name)
+	}
 
 	// }
 
