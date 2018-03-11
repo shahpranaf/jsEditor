@@ -44,7 +44,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	if value, err := vm.Get("abc"); err == nil {
 		if valueInt, err := value.ToInteger(); err == nil {
 			log.Debugf("The value of i is [%d]", valueInt) // 4
-			context.SetOutput("result", value)
+			context.SetOutput("result", valueInt)
 		}
 
 	}
