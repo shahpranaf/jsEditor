@@ -49,13 +49,13 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	// Set the result as part of the context
 	// if value, err := vm.Get("abc"); err == nil {
 	if argsOut, err := vm.Get("args"); err == nil {
-		log.Debugf("The value of i is [%s]", argsOut) // 4
+		log.Debugf("The value of i is %s", argsOut) // 4
 		// context.SetOutput("args_out", argsOut)
+		context.SetOutput("args_out", argsOut)
+
 	}
 
 	// }
-
-	context.SetOutput("args_out", "pranav")
 
 	// Signal to the Flogo engine that the activity is completed
 	return true, nil
