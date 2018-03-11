@@ -53,6 +53,8 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 		// context.SetOutput("args_out", argsOut)
 		context.SetOutput("args_out", argsOut)
 
+		log.Debugf("The value of j is %s", argsOut) // 4
+
 	}
 
 	// }
