@@ -11,8 +11,8 @@
       "type": "any"
     },
     {
-      "name": "args",
-      "type": "complex_object"
+      "name": "arg1",
+      "type": "array"
     }
   ],
   "outputs": [
